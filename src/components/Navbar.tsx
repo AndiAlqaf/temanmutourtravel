@@ -1,50 +1,107 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Menu, X, Compass, PhoneCall } from "lucide-react";
+import { MessageCircle, Menu, X, PhoneCall } from "lucide-react";
 import { TRAVEL_INFO } from "@/data/travelData";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
 
+  const isClickScrollingRef = useRef<boolean>(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const navLinks = [
     { label: "Tentang", href: "#tentang" },
-    { label: "Mengapa Kami", href: "#mengapa-kami" },
     { label: "Konsep Private", href: "#konsep-private" },
     { label: "Paket Umrah", href: "#paket-umrah" },
-    { label: "Rencana & Biaya", href: "#kalkulator" },
-    { label: "Dokumentasi", href: "#galeri" },
+    { label: "Simulasi Biaya", href: "#kalkulator" },
+    { label: "Transportasi", href: "#transportasi" },
+    { label: "Visa & Vaksin", href: "#visa-vaksin" },
+    { label: "Galeri", href: "#galeri" },
     { label: "FAQ", href: "#faq" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navLinks.map((l) => l.href.replace("#", ""));
-      const scrollPos = window.scrollY;
+      // Don't override active section while smooth scrolling from a user click
+      if (isClickScrollingRef.current) return;
 
-      for (const sectionId of [...sections].reverse()) {
-        const el = document.getElementById(sectionId);
+      // If near the very top of the page, clear active highlight
+      if (window.scrollY < 100) {
+        setActiveSection("");
+        return;
+      }
+
+      // If near the very bottom of the page, activate FAQ
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+        setActiveSection("faq");
+        return;
+      }
+
+      const headerOffset = 180;
+      let matchedSection = "";
+
+      // Check sections from bottom to top using getBoundingClientRect
+      for (const link of [...navLinks].reverse()) {
+        const id = link.href.replace("#", "");
+        const el = document.getElementById(id);
         if (el) {
-          const top = el.offsetTop - 140;
-          if (scrollPos >= top) {
-            setActiveSection(sectionId);
-            return;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= headerOffset) {
+            matchedSection = id;
+            break;
           }
         }
       }
-      setActiveSection("");
+
+      if (matchedSection) {
+        setActiveSection(matchedSection);
+      }
+    };
+
+    const handleUserInteraction = () => {
+      // If user manually scrolls via mousewheel or touch, cancel click lock immediately
+      isClickScrollingRef.current = false;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("wheel", handleUserInteraction, { passive: true });
+    window.addEventListener("touchstart", handleUserInteraction, { passive: true });
+
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleUserInteraction);
+      window.removeEventListener("touchstart", handleUserInteraction);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
   }, []);
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    setActiveSection(sectionId);
+    isClickScrollingRef.current = true;
     setMobileMenuOpen(false);
+
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      try {
+        window.history.pushState(null, "", `#${sectionId}`);
+      } catch (_) {}
+    }
+
+    // Release lock after smooth scroll animation completes (typically ~800ms)
+    scrollTimeoutRef.current = setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 850);
   };
 
   const createWhatsAppUrl = (text: string) => {
@@ -75,11 +132,13 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="nav-desktop" aria-label="Main Navigation">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.href.replace("#", "");
+            const sectionId = link.href.replace("#", "");
+            const isActive = activeSection === sectionId;
             return (
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleLinkClick(e, sectionId)}
                 className={`nav-link ${isActive ? "active" : ""}`}
               >
                 {link.label}
@@ -116,17 +175,20 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="mobile-drawer">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={handleLinkClick}
-              className="nav-link"
-              style={{ fontSize: "1rem", padding: "8px 0" }}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const sectionId = link.href.replace("#", "");
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleLinkClick(e, sectionId)}
+                className={`nav-link ${activeSection === sectionId ? "active" : ""}`}
+                style={{ fontSize: "1rem", padding: "8px 0" }}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <div style={{ paddingTop: "12px", borderTop: "1px solid var(--border-color)", display: "flex", flexDirection: "column", gap: "10px" }}>
             <a
               href={createWhatsAppUrl(
@@ -135,7 +197,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-whatsapp"
-              onClick={handleLinkClick}
+              onClick={() => setMobileMenuOpen(false)}
             >
               <MessageCircle size={18} />
               <span>Hubungi WhatsApp (+62 812-1455-8707)</span>
@@ -143,7 +205,7 @@ export default function Navbar() {
             <a
               href="tel:+6281214558707"
               className="btn btn-outline btn-sm"
-              onClick={handleLinkClick}
+              onClick={() => setMobileMenuOpen(false)}
             >
               <PhoneCall size={16} />
               <span>Telepon Langsung</span>

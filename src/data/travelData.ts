@@ -18,6 +18,277 @@ export interface UmrahPackage {
   hotel: string;
 }
 
+export interface TransportRoute {
+  id: string;
+  from: string;
+  to: string;
+  priceSAR: number;
+  note?: string;
+  category: "airport" | "intercity" | "ziarah" | "station";
+  highlight?: boolean;
+}
+
+export interface TransportVehicle {
+  id: string;
+  name: string;
+  category: string;
+  capacity: string;
+  luggage: string;
+  badge: string;
+  featured?: boolean;
+  tagline: string;
+  description: string;
+  idealFor: string;
+  features: string[];
+  routes: TransportRoute[];
+}
+
+export const TRANSPORT_FEATURES = [
+  {
+    title: "Mobil Terbaru & Nyaman",
+    description: "Perjalanan bersama armada modern kami yang bersih, terawat secara berkala, dan ber-AC dingin.",
+    icon: "Car",
+  },
+  {
+    title: "Sopir Profesional & Berpengalaman",
+    description: "Ramah, santun, hafal rute Tanah Suci, serta selalu tepat waktu menyambut kedatangan Anda.",
+    icon: "UserCheck",
+  },
+  {
+    title: "Layanan Terpercaya",
+    description: "Pilihan tepat untuk perjalanan ibadah dan mobilitas yang lancar, aman, serta bebas kendala.",
+    icon: "ShieldCheck",
+  },
+  {
+    title: "Pelayanan Ramah & 24/7",
+    description: "Prioritas utama pada kebutuhan & keselamatan Anda. Siap melayani 24 Jam nonstop, berbasis di Makkah.",
+    icon: "Clock",
+  },
+];
+
+export const TRANSPORT_VEHICLES: TransportVehicle[] = [
+  {
+    id: "camry",
+    name: "Camry Terbaru",
+    category: "Sedan Modern",
+    capacity: "4 Kursi (Ideal 2 - 3 Penumpang)",
+    luggage: "2 - 3 Koper Sedang",
+    badge: "Gesit & Nyaman",
+    featured: false,
+    tagline: "Perjalanan Halus & Efisien untuk Pasangan / Personal",
+    description: "Sedan modern terbaru dengan suspensi empuk, kabin senyap, dan AC prima. Sangat cocok untuk perjalanan cepat antara hotel, bandara, stasiun, hingga ziarah.",
+    idealFor: "Pasangan suami-istri, personal, atau keluarga kecil 2-3 orang",
+    features: [
+      "Armada model terbaru & terawat berkala",
+      "Kenyamanan kabin eksekutif & senyap",
+      "AC sejuk optimal untuk cuaca Saudi",
+      "Sopir profesional & tepat waktu",
+    ],
+    routes: [
+      { id: "c-1", from: "Bandara Madinah", to: "Hotel Madinah", priceSAR: 250, category: "airport" },
+      { id: "c-2", from: "Jeddah (Bandara / Kota)", to: "Makkah", priceSAR: 300, category: "intercity", highlight: true },
+      { id: "c-3", from: "Makkah", to: "Jeddah", priceSAR: 250, category: "intercity" },
+      { id: "c-4", from: "Makkah", to: "Madinah", priceSAR: 450, category: "intercity" },
+      { id: "c-5", from: "Madinah", to: "Jeddah", priceSAR: 450, category: "intercity" },
+      { id: "c-6", from: "Ziarah Kota Makkah", to: "Destinasi Bersejarah", priceSAR: 250, note: "Dengan Museum: 300 SAR", category: "ziarah", highlight: true },
+      { id: "c-7", from: "Ziarah Kota Madinah", to: "Jabal Uhud, Quba, Qiblatain", priceSAR: 250, category: "ziarah" },
+      { id: "c-8", from: "Hotel Makkah", to: "Stasiun Kereta Haramain", priceSAR: 200, category: "station" },
+      { id: "c-9", from: "Hotel Madinah", to: "Stasiun Kereta Haramain", priceSAR: 200, category: "station" },
+      { id: "c-10", from: "Stasiun Kereta Madinah", to: "Hotel Madinah", priceSAR: 200, category: "station" },
+      { id: "c-11", from: "Hotel / Gedung Madinah", to: "Bandara Madinah", priceSAR: 200, category: "airport" },
+      { id: "c-12", from: "Ziarah Kota Sejuk Thaif", to: "Makkah PP / Wisata Thaif", priceSAR: 500, category: "ziarah", highlight: true },
+    ],
+  },
+  {
+    id: "staria-starex",
+    name: "Staria / Starex",
+    category: "MPV Premium",
+    capacity: "7 Kursi (Ideal 4 - 6 Penumpang)",
+    luggage: "4 - 5 Koper Besar",
+    badge: "Paling Diminati Keluarga",
+    featured: true,
+    tagline: "Kenyamanan Lapang untuk Perjalanan Keluarga",
+    description: "MPV modern berdesain futuristik dengan ruang kabin luas, pintu geser praktis, dan tempat duduk lega. Solusi favorit keluarga yang membawa anak-anak dan koper banyak.",
+    idealFor: "Keluarga (4-6 orang) atau rombongan kecil dengan bagasi",
+    features: [
+      "Kapasitas 7 Kursi dengan legroom ekstra",
+      "Pintu geser otomatis memudahkan lansia & anak-anak",
+      "Bagasi luas untuk koper & oleh-oleh",
+      "Layanan antar-jemput 24 Jam standby",
+    ],
+    routes: [
+      { id: "s-1", from: "Bandara Jeddah", to: "Makkah", priceSAR: 350, note: "+biaya untuk Nusuk", category: "airport", highlight: true },
+      { id: "s-2", from: "Makkah", to: "Jeddah", priceSAR: 300, category: "intercity" },
+      { id: "s-3", from: "Ziarah Kota Makkah", to: "Destinasi Bersejarah", priceSAR: 300, note: "Dengan Museum: 350 SAR", category: "ziarah", highlight: true },
+      { id: "s-4", from: "Makkah", to: "Madinah", priceSAR: 550, category: "intercity" },
+      { id: "s-5", from: "Madinah", to: "Jeddah", priceSAR: 550, category: "intercity" },
+      { id: "s-6", from: "Ziarah Kota Madinah", to: "Jabal Uhud, Quba, Kebun Kurma", priceSAR: 300, category: "ziarah" },
+      { id: "s-7", from: "Makkah", to: "Stasiun Kereta Haramain", priceSAR: 220, category: "station" },
+      { id: "s-8", from: "Madinah", to: "Stasiun Kereta Haramain", priceSAR: 220, category: "station" },
+      { id: "s-9", from: "Hotel Madinah", to: "Bandara Madinah", priceSAR: 220, category: "airport" },
+      { id: "s-10", from: "Bandara Madinah", to: "Hotel Madinah", priceSAR: 300, category: "airport" },
+      { id: "s-11", from: "Ziarah Kota Sejuk Thaif", to: "Makkah PP / Wisata Thaif", priceSAR: 600, category: "ziarah", highlight: true },
+    ],
+  },
+  {
+    id: "hiace",
+    name: "Toyota Hiace",
+    category: "Minibus Eksekutif",
+    capacity: "11 Kursi (Ideal 7 - 10 Penumpang)",
+    luggage: "8 - 10 Koper Besar",
+    badge: "Kapasitas Besar",
+    featured: false,
+    tagline: "Pilihan Ekonomis & Lega untuk Rombongan Komunitas",
+    description: "Minibus tangguh dengan 11 kursi penumpang dan atap tinggi (high-roof). Ruang kabin sangat lega untuk rombongan keluarga besar, majelis taklim, atau group mandiri.",
+    idealFor: "Rombongan group, keluarga besar 7-10 orang, dan majelis taklim",
+    features: [
+      "Kapasitas 11 Kursi penumpang lega",
+      "Kabin tinggi (high-roof) memudahkan bergerak di dalam",
+      "Bagasi ekstra lapang untuk koper seluruh rombongan",
+      "Hemat biaya per pax untuk grup",
+    ],
+    routes: [
+      { id: "h-1", from: "Bandara Jeddah", to: "Makkah", priceSAR: 400, category: "airport", highlight: true },
+      { id: "h-2", from: "Makkah", to: "Jeddah", priceSAR: 350, category: "intercity" },
+      { id: "h-3", from: "Ziarah Kota Makkah", to: "Destinasi Bersejarah", priceSAR: 350, note: "Dengan Museum: 400 SAR", category: "ziarah", highlight: true },
+      { id: "h-4", from: "Makkah", to: "Madinah", priceSAR: 600, category: "intercity" },
+      { id: "h-5", from: "Madinah", to: "Jeddah", priceSAR: 600, category: "intercity" },
+      { id: "h-6", from: "Ziarah Kota Madinah", to: "Jabal Uhud, Quba, Khandaq", priceSAR: 350, category: "ziarah" },
+      { id: "h-7", from: "Hotel Makkah", to: "Stasiun Kereta Haramain", priceSAR: 250, category: "station" },
+      { id: "h-8", from: "Madinah", to: "Stasiun Kereta Haramain", priceSAR: 250, category: "station" },
+      { id: "h-9", from: "Bandara Madinah", to: "Hotel Madinah", priceSAR: 350, category: "airport" },
+      { id: "h-10", from: "Hotel / Gedung Madinah", to: "Bandara Madinah", priceSAR: 250, category: "airport" },
+      { id: "h-11", from: "Ziarah Kota Sejuk Thaif", to: "Makkah PP / Wisata Thaif", priceSAR: 700, category: "ziarah", highlight: true },
+    ],
+  },
+  {
+    id: "gmc-xl",
+    name: "GMC Yukon XL",
+    category: "Luxury VIP SUV",
+    capacity: "7 Kursi VIP (Ideal 4 - 6 Penumpang)",
+    luggage: "5 - 7 Koper Besar",
+    badge: "Kelas VIP Tertinggi",
+    featured: true,
+    tagline: "Kemewahan & Eksklusivitas Tertinggi di Tanah Suci",
+    description: "SUV legendaris berukuran penuh (Full-Size Luxury SUV). Menawarkan suspensi paling empuk, jok kulit premium, privasi tinggi, serta kehadiran yang mewah dan berwibawa.",
+    idealFor: "Tamu VIP, keluarga eksekutif, dan jamaah yang memprioritaskan privasi & kemewahan",
+    features: [
+      "Armada Luxury SUV Full-Size teratas",
+      "Kenyamanan suspensi udara kelas satu",
+      "Jok kulit mewah & kabin super senyap",
+      "Pelayanan sopir VIP berdedikasi",
+    ],
+    routes: [
+      { id: "g-1", from: "Bandara Madinah", to: "Hotel Madinah", priceSAR: 350, category: "airport" },
+      { id: "g-2", from: "Ziarah Kota Madinah", to: "Destinasi Bersejarah & Ziarah", priceSAR: 400, category: "ziarah" },
+      { id: "g-3", from: "Hotel Madinah", to: "Bandara Madinah", priceSAR: 300, category: "airport" },
+      { id: "g-4", from: "Hotel Madinah", to: "Stasiun Kereta Madinah", priceSAR: 300, category: "station" },
+      { id: "g-5", from: "Stasiun Kereta Madinah", to: "Hotel Madinah", priceSAR: 300, category: "station" },
+      { id: "g-6", from: "Bandara Jeddah", to: "Makkah", priceSAR: 500, category: "airport", highlight: true },
+      { id: "g-7", from: "Makkah", to: "Jeddah", priceSAR: 400, category: "intercity" },
+      { id: "g-8", from: "Ziarah Kota Makkah", to: "Destinasi Bersejarah", priceSAR: 400, note: "Dengan Museum: 450 SAR", category: "ziarah", highlight: true },
+      { id: "g-9", from: "Makkah", to: "Kota Thaif", priceSAR: 900, category: "ziarah", highlight: true },
+    ],
+  },
+];
+
+export interface VisaVaccineService {
+  id: string;
+  category: "visa" | "vaksin";
+  name: string;
+  subtitle: string;
+  badge: string;
+  priceFormatted: string;
+  currencyLabel: string;
+  featured?: boolean;
+  processingTime: string;
+  validity: string;
+  description: string;
+  requirements: string[];
+  benefits: string[];
+}
+
+export const VISA_VACCINE_SERVICES: VisaVaccineService[] = [
+  {
+    id: "visa-umrah",
+    category: "visa",
+    name: "Visa Umrah & Saudi",
+    subtitle: "Izin Masuk Resmi Kerajaan Arab Saudi",
+    badge: "Paling Banyak Diajukan",
+    priceFormatted: "Rp 2.700.000",
+    currencyLabel: "/ paspor",
+    featured: true,
+    processingTime: "1 - 3 Hari Kerja",
+    validity: "90 Hari Kunjungan",
+    description:
+      "Pengurusan visa resmi Umrah / Tourist Arab Saudi yang terhubung langsung ke sistem Kementerian Haji & Umrah (Muassasah / Nusuk). Aman, resmi, dan terverifikasi cepat.",
+    requirements: [
+      "Foto paspor asli (masa berlaku min. 6 bulan)",
+      "Pas foto terbaru latar belakang putih",
+      "KTP & Kartu Keluarga (KK)",
+      "Buku nikah (bila bepergian bersama suami/istri)",
+    ],
+    benefits: [
+      "Terdaftar resmi di sistem portal visa Saudi & Nusuk",
+      "Termasuk asuransi kesehatan resmi dari otoritas Saudi",
+      "Asistensi kelengkapan dokumen hingga e-Visa terbit",
+      "Bebas konsultasi dan pendampingan input data",
+    ],
+  },
+  {
+    id: "visa-voa-egypt",
+    category: "visa",
+    name: "Visa VOA Egypt (Mesir)",
+    subtitle: "Visa On Arrival Transit & Wisata Sejarah Mesir",
+    badge: "Umrah Plus / Transit",
+    priceFormatted: "$200",
+    currencyLabel: "USD / orang",
+    featured: false,
+    processingTime: "On Arrival / Pre-arranged Approval",
+    validity: "30 Hari Kunjungan",
+    description:
+      "Layanan asistensi pengurusan Visa On Arrival (VOA) untuk wilayah Mesir. Sangat tepat bagi jamaah yang mengambil rute transit atau paket Umrah Plus Mesir (Kairo, Piramida Giza, Sungai Nil).",
+    requirements: [
+      "Paspor asli berlaku minimal 6 bulan",
+      "Tiket penerbangan lanjutan (Return / Onward Ticket)",
+      "Bukti reservasi hotel / itinerary tour Mesir",
+      "Asuransi perjalanan internasional",
+    ],
+    benefits: [
+      "Asistensi handling dan imigrasi di Bandara Kairo",
+      "Proses izin masuk terkoordinasi dan minim antre",
+      "Didampingi oleh perwakilan mitra lokal resmi di Mesir",
+      "Pengecekan kelengkapan berkas sebelum keberangkatan",
+    ],
+  },
+  {
+    id: "vaksin-meningitis",
+    category: "vaksin",
+    name: "Vaksin Meningitis Internasional",
+    subtitle: "Sertifikat Resmi Buku Kuning (ICV) Kemenkes RI",
+    badge: "Wajib Regulasi",
+    priceFormatted: "Rp 1.500.000",
+    currencyLabel: "/ jamaah",
+    featured: false,
+    processingTime: "1 Hari (Sertifikat Langsung Terbit)",
+    validity: "Berlaku hingga 3 Tahun",
+    description:
+      "Layanan pendaftaran dan pendampingan vaksinasi Meningitis Meningokokus resmi sesuai ketentuan Kementerian Kesehatan RI dan Kementerian Haji Arab Saudi. Termasuk Buku Kuning (ICV) dan integrasi SatuSehat.",
+    requirements: [
+      "KTP asli atau salinan identitas diri",
+      "Fotokopi / scan paspor untuk pencatatan nomor di ICV",
+      "Kondisi fisik sehat pada saat jadwal penyuntikan",
+      "Jadwal vaksinasi minimal 14 hari sebelum keberangkatan",
+    ],
+    benefits: [
+      "Penerbitan Buku Kuning (ICV) resmi berstandar WHO",
+      "Vaksin halal tersertifikasi MUI dan BPOM RI",
+      "Terintegrasi otomatis ke sistem SatuSehat Kemenkes",
+      "Koordinasi faskes / KKP tanpa perlu antre panjang",
+    ],
+  },
+];
+
 export interface Testimonial {
   id: string;
   name: string;

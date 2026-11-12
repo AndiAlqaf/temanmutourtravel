@@ -75,6 +75,12 @@ export default function Footer() {
                 <a href="#kalkulator">Simulasi Rencana Perjalanan</a>
               </li>
               <li className="footer-link-item">
+                <a href="#transportasi">Layanan Transportasi Arab Saudi</a>
+              </li>
+              <li className="footer-link-item">
+                <a href="#visa-vaksin">Layanan Visa & Vaksinasi</a>
+              </li>
+              <li className="footer-link-item">
                 <a href="#galeri">Dokumentasi Nyata Jamaah</a>
               </li>
               <li className="footer-link-item">

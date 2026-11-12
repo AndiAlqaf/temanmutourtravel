@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calculator, MessageCircle, Check, Users, Sparkles, Building2, Coffee, Heart } from "lucide-react";
+import { Calculator, MessageCircle, Check, Users, Building2, Coffee, Heart } from "lucide-react";
 import { TRAVEL_INFO } from "@/data/travelData";
 import Reveal from "@/components/Reveal";
 

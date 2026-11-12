@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Sparkles, MessageCircle, Car, Hotel } from "lucide-react";
+import { Check, MessageCircle, Car, Hotel } from "lucide-react";
 import { PACKAGES, TRAVEL_INFO, UmrahPackage } from "@/data/travelData";
 import Reveal from "@/components/Reveal";
 
@@ -76,14 +76,7 @@ export default function PackagesSection() {
                 className={`package-card ${pkg.featured ? "is-featured" : ""}`}
                 style={{ height: "100%" }}
               >
-              {pkg.featured && (
-                <div className="featured-pill">
-                  <Sparkles size={12} style={{ display: "inline", marginRight: "4px" }} />
-                  Paling Diminati
-                </div>
-              )}
-
-              <div className="package-header">
+                <div className="package-header">
                 <span className="badge-subtle" style={{ marginBottom: "12px" }}>
                   {pkg.badge}
                 </span>
