@@ -21,11 +21,25 @@ const HERO_SLIDES = [
     label: "Ka'bah",
   },
   {
+    src: "/images/igexport-DdqjwgjAfnJ.jpg",
+    alt: "Rombongan Jamaah Private VIP di Puncak Jabal Khandama",
+    title: "Edisi Spesial Jabal Khandama",
+    subtitle: "Panorama Menakjubkan Menara Jam Makkah Bersama Rombongan VIP",
+    label: "Khandama",
+  },
+  {
     src: "/images/momen-keluarga-nabawi.jpg",
     alt: "Kebersamaan Jamaah Keluarga di Pelataran Masjid Nabawi",
     title: "Ibadah Keluarga Khusyuk",
     subtitle: "Kedamaian Beribadah Bersama Orang Tercinta",
     label: "Nabawi",
+  },
+  {
+    src: "/images/igexport-DdqjwgjAfnJ-4.jpg",
+    alt: "Momen Spesial Pasangan Bersama Armada Mewah GMC Yukon XL",
+    title: "Kemewahan Armada GMC Yukon XL",
+    subtitle: "Kenyamanan Eksekutif & Momen Terbaik Berlatar Clock Tower",
+    label: "Armada VIP",
   },
   {
     src: "/images/hotel-view-kaaba.jpg",
@@ -35,18 +49,18 @@ const HERO_SLIDES = [
     label: "Hotel VIP",
   },
   {
-    src: "/images/nabawi-group.jpg",
-    alt: "Kekeluargaan Jamaah Temanmu Tour & Travel",
-    title: "Pendampingan dari Hati",
-    subtitle: "Ibadah Terbimbing, Nyaman & Tanpa Terburu-buru",
-    label: "Jamaah",
+    src: "/images/igexport-DdqjwgjAfnJ-2.jpg",
+    alt: "Santai Menikmati Hidangan Sore di Puncak Jabal Khandama",
+    title: "Pelayanan Hangat & Personal",
+    subtitle: "Menikmati Teh & Buah Segar Bersama Keluarga di Puncak Makkah",
+    label: "Momen VIP",
   },
   {
     src: "/images/makkah-family-zainal.jpg",
     alt: "City Tour & Kebersamaan Jamaah Singapura",
     title: "Fleksibel & Ramah Lansia",
     subtitle: "Armada Eksklusif & Jadwal Sesuai Ritme Keluarga",
-    label: "City Tour",
+    label: "Keluarga",
   },
 ];
 

@@ -579,6 +579,36 @@ export const REAL_GALLERY: GalleryItem[] = [
   },
   {
     id: "gal-2",
+    title: "Edisi Spesial Jabal Khandama — Rombongan Private VIP",
+    location: "Puncak Jabal Khandama, Makkah",
+    category: "Private VIP Tour",
+    src: "/images/igexport-DdqjwgjAfnJ.jpg",
+    caption:
+      "Momen kebersamaan hangat Rombongan Jamaah Umrah Private VIP Temanmu Tour & Travel dan Fast Travel di hadapan panorama menara jam Makkah (Clock Tower).",
+    tag: "Private VIP",
+  },
+  {
+    id: "gal-3",
+    title: "Momen Indah Pasangan Bersama Armada GMC Yukon XL",
+    location: "Jabal Khandama, Makkah",
+    category: "Umrah Pasangan",
+    src: "/images/igexport-DdqjwgjAfnJ-4.jpg",
+    caption:
+      "Kebahagiaan pasangan jamaah private berpose dari sunroof armada mewah GMC Yukon XL dengan latar belakang megah Clock Tower Makkah.",
+    tag: "Private Pasangan",
+  },
+  {
+    id: "gal-4",
+    title: "Santai & Menikmati Hidangan Sore di Puncak Makkah",
+    location: "Jabal Khandama, Makkah",
+    category: "Family & VIP Group",
+    src: "/images/igexport-DdqjwgjAfnJ-2.jpg",
+    caption:
+      "Suasana akrab dan santai jamaah menikmati hidangan buah segar dan teh hangat di atas hamparan permadani di puncak bukit bersejarah Makkah.",
+    tag: "VIP Group",
+  },
+  {
+    id: "gal-5",
     title: "City Tour Kota Makkah — Keluarga Bapak Zainal Abidin",
     location: "Masjidil Haram & Kota Makkah",
     category: "Umrah Keluarga Internasional",
@@ -588,7 +618,37 @@ export const REAL_GALLERY: GalleryItem[] = [
     tag: "Jamaah Singapura",
   },
   {
-    id: "gal-3",
+    id: "gal-6",
+    title: "Armada Mewah GMC Yukon XL — Kenyamanan Tertinggi",
+    location: "Kota Makkah Al-Mukarramah",
+    category: "Transportasi VIP",
+    src: "/images/igexport-DdqjwgjAfnJ-5.jpg",
+    caption:
+      "Kenyamanan armada full-size luxury SUV GMC Yukon XL berplat resmi Saudi Arabia dengan suspensi empuk untuk seluruh mobilitas dan ziarah jamaah.",
+    tag: "Armada GMC",
+  },
+  {
+    id: "gal-7",
+    title: "Kehangatan Jamaah Wanita di Puncak Khandama",
+    location: "Jabal Khandama, Makkah",
+    category: "Dokumentasi Jamaah",
+    src: "/images/igexport-DdqjwgjAfnJ-3.jpg",
+    caption:
+      "Keceriaan dan kebersamaan ibu-ibu jamaah private VIP menikmati panorama kota Makkah yang memesona menjelang senja.",
+    tag: "Dokumentasi Asli",
+  },
+  {
+    id: "gal-8",
+    title: "City Tour Eksklusif Bersama SUV GMC Yukon XL",
+    location: "Makkah Al-Mukarramah",
+    category: "City Tour VIP",
+    src: "/images/igexport-DdqjwgjAfnJ-6.jpg",
+    caption:
+      "Kepuasan jamaah dalam perjalanan city tour eksklusif bebas macet dan nyaman didampingi sopir berpengalaman.",
+    tag: "Eksklusif VIP",
+  },
+  {
+    id: "gal-9",
     title: "City Tour Madinah — Rombongan Jamaah Umrah Private VIP",
     location: "Masjid Quba & Jabal Uhud, Madinah",
     category: "Private VIP Tour",
@@ -598,7 +658,7 @@ export const REAL_GALLERY: GalleryItem[] = [
     tag: "Private VIP",
   },
   {
-    id: "gal-4",
+    id: "gal-10",
     title: "Momen Khusyuk & Kehangatan Keluarga di Pelataran Nabawi",
     location: "Pelataran Masjid Nabawi, Madinah",
     category: "Bakti Orang Tua",
@@ -608,7 +668,7 @@ export const REAL_GALLERY: GalleryItem[] = [
     tag: "Bakti Orang Tua",
   },
   {
-    id: "gal-5",
+    id: "gal-11",
     title: "Kemegahan Baitullah dalam Keheningan Fajar",
     location: "Masjidil Haram, Makkah",
     category: "Spiritualitas",
@@ -618,7 +678,7 @@ export const REAL_GALLERY: GalleryItem[] = [
     tag: "Baitullah",
   },
   {
-    id: "gal-6",
+    id: "gal-12",
     title: "Kenyamanan Kamar Eksklusif View Ka'bah",
     location: "Makkah Clock Tower / Shafwah",
     category: "Akomodasi Premium",
