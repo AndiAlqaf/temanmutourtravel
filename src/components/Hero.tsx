@@ -201,8 +201,9 @@ export default function Hero() {
 
               {/* Floating Minimalist Overlay Banner */}
               <div className="hero-floating-badge">
-                <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0, flex: 1 }}>
                   <div
+                    className="hero-floating-badge-logo"
                     style={{
                       width: "44px",
                       height: "44px",
@@ -230,6 +231,7 @@ export default function Hero() {
 
                 <a
                   href="#mengapa-kami"
+                  className="hero-floating-badge-link"
                   style={{
                     fontSize: "0.82rem",
                     fontWeight: 600,

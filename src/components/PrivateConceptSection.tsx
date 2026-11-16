@@ -65,7 +65,7 @@ export default function PrivateConceptSection() {
               margin: "0 auto",
             }}
           >
-            <div style={{ padding: "clamp(32px, 5vw, 56px)" }}>
+            <div style={{ padding: "clamp(20px, 4.5vw, 56px)" }}>
             <div
               className="tab-concept-badge"
               style={{
@@ -110,7 +110,7 @@ export default function PrivateConceptSection() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
                 gap: "14px",
                 marginBottom: "36px",
               }}

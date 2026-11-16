@@ -42,7 +42,7 @@ Mohon informasi ketersediaan jadwal dan konsultasi selanjutnya. Terima kasih.`;
               background: "linear-gradient(180deg, var(--color-primary-dark) 0%, #231915 100%)",
               color: "#ffffff",
               borderRadius: "var(--radius-lg)",
-              padding: "clamp(36px, 6vw, 64px)",
+              padding: "clamp(24px, 5vw, 64px)",
               textAlign: "center",
               boxShadow: "var(--shadow-lg)",
               marginBottom: "64px",
@@ -121,7 +121,7 @@ Mohon informasi ketersediaan jadwal dan konsultasi selanjutnya. Terima kasih.`;
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
                 gap: "40px",
               }}
             >

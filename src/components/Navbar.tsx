@@ -25,6 +25,17 @@ export default function Navbar() {
   ];
 
   useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       // Don't override active section while smooth scrolling from a user click
       if (isClickScrollingRef.current) return;
@@ -172,46 +183,70 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer & Backdrop */}
       {mobileMenuOpen && (
-        <div className="mobile-drawer">
-          {navLinks.map((link) => {
-            const sectionId = link.href.replace("#", "");
-            return (
+        <>
+          <div
+            className="mobile-drawer-backdrop"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="mobile-drawer" role="dialog" aria-label="Menu Navigasi Mobile">
+            {navLinks.map((link) => {
+              const sectionId = link.href.replace("#", "");
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, sectionId)}
+                  className={`nav-link ${activeSection === sectionId ? "active" : ""}`}
+                  style={{
+                    fontSize: "1.05rem",
+                    padding: "10px 0",
+                    display: "flex",
+                    alignItems: "center",
+                    minHeight: "44px",
+                  }}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+            <div
+              style={{
+                paddingTop: "14px",
+                borderTop: "1px solid var(--border-color)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                marginTop: "4px",
+              }}
+            >
               <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, sectionId)}
-                className={`nav-link ${activeSection === sectionId ? "active" : ""}`}
-                style={{ fontSize: "1rem", padding: "8px 0" }}
+                href={createWhatsAppUrl(
+                  "Halo Temanmu Tour & Travel, saya ingin konsultasi perjalanan umrah."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ justifyContent: "center", minHeight: "46px" }}
               >
-                {link.label}
+                <MessageCircle size={18} />
+                <span>Hubungi WhatsApp (+62 812-1455-8707)</span>
               </a>
-            );
-          })}
-          <div style={{ paddingTop: "12px", borderTop: "1px solid var(--border-color)", display: "flex", flexDirection: "column", gap: "10px" }}>
-            <a
-              href={createWhatsAppUrl(
-                "Halo Temanmu Tour & Travel, saya ingin konsultasi perjalanan umrah."
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-whatsapp"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <MessageCircle size={18} />
-              <span>Hubungi WhatsApp (+62 812-1455-8707)</span>
-            </a>
-            <a
-              href="tel:+6281214558707"
-              className="btn btn-outline btn-sm"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <PhoneCall size={16} />
-              <span>Telepon Langsung</span>
-            </a>
+              <a
+                href="tel:+6281214558707"
+                className="btn btn-outline btn-sm"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ justifyContent: "center", minHeight: "44px" }}
+              >
+                <PhoneCall size={16} />
+                <span>Telepon Langsung</span>
+              </a>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );
