@@ -157,8 +157,15 @@ export default function PrivateConceptSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary btn-lg"
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                textAlign: "center",
+                whiteSpace: "normal",
+                maxWidth: "100%",
+              }}
             >
-              <MessageCircle size={18} />
+              <MessageCircle size={18} style={{ flexShrink: 0 }} />
               <span>Konsultasi Paket {currentConcept.category}</span>
             </a>
           </div>
