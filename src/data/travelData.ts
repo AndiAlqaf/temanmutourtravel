@@ -741,3 +741,236 @@ export const FAQS = [
     a: "Kami sangat memahami kebutuhan lansia. Kami menyediakan fasilitas pendamping khusus (asistensi kursi roda saat tawaf & sa'i), akomodasi hotel ring 1 terdekat dari pelataran masjid, dan kendaraan berakses mudah sehingga orang tua Anda dapat beribadah tanpa kelelahan fisik.",
   },
 ];
+
+/* ==========================================================================
+   OUR LEADERSHIP & MANAGEMENT DATA
+   ========================================================================== */
+
+export interface LeadershipMember {
+  id: string;
+  name: string;
+  title: string;
+  role: string;
+  subtitle: string;
+  bio: string;
+  image: string;
+  imageAlt: string;
+  credentials: string[];
+  education: {
+    institution: string;
+    major?: string;
+    year?: string;
+  }[];
+  experience: string[];
+  competencies: string[];
+  socials?: {
+    whatsapp?: string;
+    instagram?: string;
+    facebook?: string;
+  };
+  quote?: string;
+  featured?: boolean;
+}
+
+export interface VipMentorshipFigure {
+  name: string;
+  role: string;
+  note: string;
+}
+
+export const VIP_MENTORSHIP_FIGURES: VipMentorshipFigure[] = [
+  {
+    name: "Prof. Dr. KH. Nazaruddin Umar, MA & Istri",
+    role: "Menteri Agama Republik Indonesia",
+    note: "Pendampingan Ibadah Umrah VIP di Tanah Suci",
+  },
+  {
+    name: "Rosan Roeslani",
+    role: "Menteri Investasi Republik Indonesia / Kepala BKPM",
+    note: "Pendampingan Ibadah & Ziarah VVIP Makkah - Madinah",
+  },
+  {
+    name: "Ustadz Prof. H. Abdul Somad, Lc., D.E.S.A., Ph.D (UAS)",
+    role: "Ulama Nasional & Dai Nusantara",
+    note: "Muthawwif Kolaborasi Bersama Esra Wisata",
+  },
+  {
+    name: "Prof. Dr. Drs. H. Andi M. Nurdin Halid & Keluarga",
+    role: "Anggota DPR RI & Tokoh Nasional",
+    note: "Pendampingan Umrah Private & City Tour Keluarga Besar",
+  },
+  {
+    name: "Dr. H. Bunyamin Yapid, Lc., MA",
+    role: "Staf Khusus Menteri Agama Republik Indonesia",
+    note: "Pendampingan Ibadah & Diskusi Fiqih Manasik",
+  },
+  {
+    name: "Dr. H. Muchlis Muhammad Hanafi, Lc., MA",
+    role: "Direktur Penerangan Agama Islam Kemenag RI",
+    note: "Pendampingan Ibadah & Ziarah Sejarah Islam",
+  },
+];
+
+export const LEADERSHIP_MEMBERS: LeadershipMember[] = [
+  {
+    id: "muh-agung-al-mansyah",
+    name: "Muh. Agung Al Mansyah",
+    title: "Direktur Utama",
+    role: "Direktur Utama & Muthawwif Profesional",
+    subtitle: "Al-Azhar University Cairo • Hafizh 30 Juz Al-Qur'an • Pembimbing Ibadah Tokoh Nasional",
+    bio: "Sosok pemimpin berdedikasi tinggi dengan latar belakang keilmuan Islam murni dari Universitas Al-Azhar Kairo dan hafalan 30 Juz Al-Qur'an. Berpengalaman luas sebagai muthawwif aktif sejak 2024 serta memimpin perjalanan VVIP, termasuk mendampingi Menteri Kabinet, Ulama Nasional, dan Anggota DPR RI.",
+    image: "/images/leadership/leader_img_1.jpg",
+    imageAlt: "Muh. Agung Al Mansyah - Direktur Utama Temanmu Tour & Travel",
+    credentials: [
+      "Hafizh 30 Juz Al-Qur'an (Ponpes As'adiyah Pattirosompe 2020)",
+      "Alumni Universitas Al-Azhar Kairo (Fak. Ushuluddin)",
+      "Muthawwif Menag RI Prof. Dr. KH. Nazaruddin Umar, MA",
+      "Muthawwif Menteri Investasi Rosan Roeslani & UAS",
+    ],
+    education: [
+      {
+        institution: "Universitas Al-Azhar Kairo, Mesir",
+        major: "Fakultas Ushuluddin",
+        year: "Alumni / Mahasiswa",
+      },
+      {
+        institution: "Pondok Pesantren As'adiyah Pattirosompe",
+        major: "Tahfizh 30 Juz Al-Qur'an",
+        year: "2020",
+      },
+      {
+        institution: "MA As'adiyah 21 Kampiri",
+        major: "Madrasah Aliyah Keagamaan",
+        year: "2020",
+      },
+      {
+        institution: "MTs Putra 2 Pusat Sengkang",
+        major: "Madrasah Tsanawiyah",
+        year: "2017",
+      },
+    ],
+    experience: [
+      "CEO Arta Wisata Umrah Full Ramadhan VVIP",
+      "Muthawwif Menag RI Prof. Dr. KH. Nazaruddin Umar, MA & Istri",
+      "Muthawwif Menteri Investasi Rosan Roeslani",
+      "Muthawwif Ustadz Abdul Somad (UAS) via Esra Wisata",
+      "Muthawwif Anggota DPR RI Prof. Dr. Drs. H. Andi M. Nurdin Halid",
+      "Muthawwif Stafsus Menag Dr. H. Bunyamin Yapid, Lc., MA",
+      "Muthawwif Direktur Penerangan Agama Islam Dr. H. Muchlis M. Hanafi",
+      "Muthawwif Aktif Fast Travel, An-Nur Maarif & Mazaya",
+    ],
+    competencies: [
+      "Bimbingan Manasik Sesuai Sunnah & 4 Mazhab",
+      "Private VIP Handling & Pendampingan Tokoh",
+      "Fasih Bahasa Arab & Khazanah Sirah Nabawiyah",
+      "Jaringan Luas Penyelenggaraan Akomodasi di Tanah Suci",
+    ],
+    socials: {
+      whatsapp: "https://wa.me/6281214558707",
+      instagram: "https://instagram.com/agungalman",
+      facebook: "https://facebook.com/AgungAlman",
+    },
+    quote:
+      "Umrah bukan sekadar perpindahan fisik menuju Tanah Suci, melainkan safar hati untuk meraih ridha Ilahi dengan bimbingan yang tulus, santun, dan menenangkan.",
+    featured: true,
+  },
+  {
+    id: "andi-muhammad-akram-ibrahim",
+    name: "Andi Muhammad Akram Ibrahim, Lc. Dipl",
+    title: "Chief Operating Officer (COO)",
+    role: "Chief Operating Officer & Head of Strategic Management",
+    subtitle: "Al-Azhar University Cairo • S2 Pendidikan Agama Islam • Tata Kelola & Transformasi Digital",
+    bio: "Pakar tata kelola operasional dan strategi digital lulusan Universitas Al-Azhar Kairo yang saat ini menempuh Magister Pendidikan Agama Islam di IAIN Parepare. Mengintegrasikan nilai keilmuan Islam dengan sistem operasional modern, digitalisasi layanan, dan budaya pelayanan berintegritas tinggi.",
+    image: "/images/leadership/leader_img_15.jpg",
+    imageAlt: "Andi Muhammad Akram Ibrahim, Lc. Dipl - Chief Operating Officer",
+    credentials: [
+      "Sarjana (S1) Dirasat Islamiyah wal Arabiyah Al-Azhar Cairo",
+      "Mahasiswa Magister (S2) Pendidikan Agama Islam IAIN Parepare",
+      "Alumni Pondok Pesantren DDI Mangkoso (Tsanawiyah & Aliyah)",
+      "Pengelola Komunikasi Digital, Literasi & Khazanah Turats",
+    ],
+    education: [
+      {
+        institution: "IAIN Parepare Indonesia",
+        major: "Program Pascasarjana Magister (S2) Pendidikan Agama Islam",
+        year: "Sedang Menempuh",
+      },
+      {
+        institution: "Al-Azhar University Cairo, Egypt",
+        major: "Sarjana (S1) Dirasat Islamiyah wal Arabiyah",
+        year: "Alumni",
+      },
+      {
+        institution: "Pondok Pesantren DDI Mangkoso",
+        major: "Madrasah Tsanawiyah & Aliyah",
+        year: "Alumni",
+      },
+    ],
+    experience: [
+      "Chief Operating Officer (COO) Temanmu Tour & Travel",
+      "Strategic Business Development & Digital Transformation Temanmu",
+      "Social Media Management & Digital Branding (ICATT, KKS Mesir, DDI Mangkoso)",
+      "Pengelola Jurnal Ilmiah Tarsyid (Pendidikan Islam)",
+      "Inisiator & Penggerak Komunitas Rehat (Edukasi & Literasi)",
+      "Penggerak Komunitas Rumah Visual (Visual Arts & Creative Collaboration)",
+      "Pengembang Platform Bayt Turats (Kajian Literatur Klasik Islam)",
+    ],
+    competencies: [
+      "Operations Management & Integrated Workflow",
+      "Digital Branding & Strategic Communication",
+      "Community Engagement & Stakeholder Relations",
+      "Organizational Governance & Service Excellence",
+    ],
+    socials: {
+      whatsapp: "https://wa.me/6281214558707",
+    },
+    quote:
+      "Perusahaan yang kokoh dibangun atas sistem manajemen yang rapi, komunikasi yang jujur, inovasi berkelanjutan, dan amanah yang dijaga dalam setiap helai pelayanan.",
+    featured: true,
+  },
+];
+
+export const LEADERSHIP_DOCUMENTATION_GALLERY = [
+  {
+    id: "lead-doc-1",
+    src: "/images/leadership/leader_img_33.jpg",
+    title: "Pendampingan Menag RI Prof. Dr. KH. Nazaruddin Umar, MA",
+    category: "VIP Mentorship",
+    caption: "Muh. Agung Al Mansyah saat mendampingi Menteri Agama Republik Indonesia dan rombongan beribadah di Tanah Suci.",
+  },
+  {
+    id: "lead-doc-2",
+    src: "/images/leadership/leader_img_39.jpg",
+    title: "Bersama Menteri Investasi RI Rosan Roeslani",
+    category: "VVIP Handling",
+    caption: "Momen pendampingan ibadah dan silaturahmi bersama Menteri Investasi RI di Makkah Al-Mukarramah.",
+  },
+  {
+    id: "lead-doc-3",
+    src: "/images/leadership/leader_img_36.jpg",
+    title: "Kolaborasi Bersama Ustadz Abdul Somad (UAS)",
+    category: "Spiritual Guidance",
+    caption: "Menjadi muthawwif dalam program perjalanan ibadah umrah bersama Ustadz Abdul Somad via Esra Wisata.",
+  },
+  {
+    id: "lead-doc-4",
+    src: "/images/leadership/leader_img_43.jpg",
+    title: "Pendampingan Anggota DPR RI Andi Nurdin Halid",
+    category: "Private Family VIP",
+    caption: "Pendampingan private ibadah umrah dan ziarah keluarga besar Prof. Dr. Andi M. Nurdin Halid.",
+  },
+  {
+    id: "lead-doc-5",
+    src: "/images/leadership/leader_img_31.jpg",
+    title: "Standar Layanan Armada Eksekutif",
+    category: "Transport Excellence",
+    caption: "Pengawasan langsung armada privat GMC Yukon dan Hyundai demi memastikan kenyamanan maksimal jamaah.",
+  },
+  {
+    id: "lead-doc-6",
+    src: "/images/leadership/leader_img_35.jpg",
+    title: "Eksplorasi Panorama Jabal Khandama",
+    category: "Field Guidance",
+    caption: "Muh. Agung Al Mansyah membimbing jamaah mengeksplorasi sejarah dan keagungan kota suci Makkah dari puncak Jabal Khandama.",
+  },
+];

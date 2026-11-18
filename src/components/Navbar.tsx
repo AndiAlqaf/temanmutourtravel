@@ -16,6 +16,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "Tentang", href: "#tentang" },
     { label: "Konsep Private", href: "#konsep-private" },
+    { label: "Our Leadership", href: "#leadership" },
     { label: "Paket Umrah", href: "#paket-umrah" },
     { label: "Simulasi Biaya", href: "#kalkulator" },
     { label: "Transportasi", href: "#transportasi" },
@@ -107,6 +108,8 @@ export default function Navbar() {
       try {
         window.history.pushState(null, "", `#${sectionId}`);
       } catch (_) {}
+    } else {
+      window.location.href = `/#${sectionId}`;
     }
 
     // Release lock after smooth scroll animation completes (typically ~800ms)

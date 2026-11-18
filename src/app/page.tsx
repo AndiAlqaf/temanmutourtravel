@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ValuesSection from "@/components/ValuesSection";
 import PrivateConceptSection from "@/components/PrivateConceptSection";
+import LeadershipSection from "@/components/LeadershipSection";
 import PromoHighlight from "@/components/PromoHighlight";
 import PackagesSection from "@/components/PackagesSection";
 import CustomTripCalculator from "@/components/CustomTripCalculator";
@@ -35,31 +36,34 @@ export default function Home() {
         {/* 3. Umrah dengan Konsep Private (Your Journey, Your Way) */}
         <PrivateConceptSection />
 
-        {/* 4. Special Promo Banner (9D Start Makassar Promo) */}
+        {/* 4. Our Leadership & Dewan Direksi */}
+        <LeadershipSection />
+
+        {/* 5. Special Promo Banner (9D Start Makassar Promo) */}
         <PromoHighlight />
 
-        {/* 5. Packages Comparison (35 Jt, 53 Jt, 88 Jt) */}
+        {/* 6. Packages Comparison (35 Jt, 53 Jt, 88 Jt) */}
         <PackagesSection />
 
-        {/* 6. Interactive Umrah Customizer & Cost Calculator */}
+        {/* 7. Interactive Umrah Customizer & Cost Calculator */}
         <CustomTripCalculator />
 
-        {/* 7. Transport & Fleet Services (Makkah, Madinah, Jeddah, Thaif) */}
+        {/* 8. Transport & Fleet Services (Makkah, Madinah, Jeddah, Thaif) */}
         <TransportSection />
 
-        {/* 8. Visa & Vaccine Services (Saudi, Egypt, ICV) */}
+        {/* 9. Visa & Vaccine Services (Saudi, Egypt, ICV) */}
         <VisaVaccineSection />
 
-        {/* 9. Authentic Gallery & Real Pilgrim Documentation */}
+        {/* 10. Authentic Gallery & Real Pilgrim Documentation */}
         <GallerySection />
 
-        {/* 8. Testimonials & Pilgrim Stories */}
+        {/* 11. Testimonials & Pilgrim Stories */}
         <TestimonialSection />
 
-        {/* 9. FAQ Section */}
+        {/* 12. FAQ Section */}
         <FaqSection />
 
-        {/* 10. Slide 12 Emotional Quotation & Consultation Form */}
+        {/* 13. Slide 12 Emotional Quotation & Consultation Form */}
         <ContactCtaSection />
       </main>
 
