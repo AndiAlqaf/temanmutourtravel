@@ -28,7 +28,7 @@ export default function LeadershipPage() {
       <Navbar />
 
       {/* Main Content */}
-      <main style={{ flex: 1, paddingTop: "var(--header-height)" }} className="page-fade-in">
+      <main style={{ flex: 1 }} className="page-fade-in">
         {/* Breadcrumb / Top Bar */}
         <div className="leadership-page-header">
           <div className="container">

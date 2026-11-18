@@ -9,6 +9,7 @@ import { TRAVEL_INFO } from "@/data/travelData";
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const isClickScrollingRef = useRef<boolean>(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -24,6 +25,15 @@ export default function Navbar() {
     { label: "Galeri", href: "#galeri" },
     { label: "FAQ", href: "#faq" },
   ];
+
+  useEffect(() => {
+    const handleScrollState = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScrollState, { passive: true });
+    handleScrollState();
+    return () => window.removeEventListener("scroll", handleScrollState);
+  }, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -123,7 +133,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
       <div className="container header-inner">
         {/* Brand Logo */}
         <Link href="/" className="brand-logo-wrap" aria-label="Temanmu Tour & Travel">
