@@ -2,47 +2,61 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   Award,
-  BookOpen,
   GraduationCap,
   ShieldCheck,
   CheckCircle2,
-  MessageCircle,
-  Sparkles,
   ExternalLink,
   ChevronRight,
+  ChevronLeft,
   Quote,
-  Users,
+  Folder,
+  FolderOpen,
+  MapPin,
+  X,
+  Camera,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import {
   LEADERSHIP_MEMBERS,
   VIP_MENTORSHIP_FIGURES,
-  LEADERSHIP_DOCUMENTATION_GALLERY,
-  TRAVEL_INFO,
+  MUTHAWWIF_EXPERIENCE_FOLDERS,
+  MuthawwifExperienceFolder,
 } from "@/data/travelData";
 
-export default function LeadershipSection({ isStandalonePage = false }: { isStandalonePage?: boolean }) {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+export default function LeadershipSection() {
+  const [activeFolder, setActiveFolder] = useState<MuthawwifExperienceFolder | null>(null);
+  const [activePhotoIndex, setActivePhotoIndex] = useState<number>(0);
 
-  const directConsultationUrl = `https://wa.me/${TRAVEL_INFO.whatsappNumber}?text=${encodeURIComponent(
-    "Assalamu'alaikum Temanmu Tour & Travel, saya ingin berkonsultasi mengenai paket Umrah Private dengan bimbingan langsung Direktur Utama & Muthawwif Profesional."
-  )}`;
+  const openFolderModal = (folder: MuthawwifExperienceFolder) => {
+    setActiveFolder(folder);
+    setActivePhotoIndex(0);
+  };
+
+  const closeFolderModal = () => {
+    setActiveFolder(null);
+    setActivePhotoIndex(0);
+  };
+
+  const nextPhoto = () => {
+    if (!activeFolder) return;
+    setActivePhotoIndex((prev) => (prev + 1) % activeFolder.allImages.length);
+  };
+
+  const prevPhoto = () => {
+    if (!activeFolder) return;
+    setActivePhotoIndex((prev) => (prev - 1 + activeFolder.allImages.length) % activeFolder.allImages.length);
+  };
 
   return (
-    <section className={`section leadership-section ${isStandalonePage ? "standalone-page-section" : ""}`} id="leadership">
+    <section className="section leadership-section" id="leadership">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <Reveal variant="fade-up">
-            <span className="section-badge">
-              <Sparkles size={14} className="text-gold" />
-              <span>Our Leadership & Dewan Direksi</span>
-            </span>
             <h2 className="section-title">
-              Dipimpin oleh Generasi Ahli, Berilmu, & Berintegritas
+              Dipimpin oleh Generasi Ahli, Berilmu, &amp; Berintegritas
             </h2>
             <p className="section-subtitle">
               Sinergi antara keilmuan Islam otentik lulusan Universitas Al-Azhar Kairo, hafizh 30 Juz Al-Qur&apos;an, rekam jejak bimbingan tokoh nasional, serta manajemen modern yang transparan dan amanah.
@@ -122,6 +136,18 @@ export default function LeadershipSection({ isStandalonePage = false }: { isStan
                           <span>{cred}</span>
                         </span>
                       ))}
+                      {leader.socials?.instagram && (
+                        <a
+                          href={leader.socials.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="leader-chip leader-social-chip"
+                          aria-label="Instagram Profil"
+                        >
+                          <ExternalLink size={13} className="text-gold" />
+                          <span>Instagram</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -190,82 +216,110 @@ export default function LeadershipSection({ isStandalonePage = false }: { isStan
                       ))}
                     </div>
                   </div>
-
-                  {/* Card Action Footer */}
-                  <div className="leader-card-footer">
-                    <a
-                      href={leader.socials?.whatsapp || directConsultationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-outline btn-sm leader-cta-btn"
-                    >
-                      <MessageCircle size={16} />
-                      <span>Konsultasi Khusus {leader.title}</span>
-                    </a>
-
-                    {leader.socials?.instagram && (
-                      <a
-                        href={leader.socials.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="leader-social-link"
-                        aria-label="Instagram Profil"
-                      >
-                        <ExternalLink size={15} />
-                        <span>Instagram</span>
-                      </a>
-                    )}
-                  </div>
                 </div>
               </article>
             </Reveal>
           ))}
         </div>
 
-        {/* Documentation Gallery of Leaders in Tanah Suci */}
-        <div className="leadership-gallery-wrapper">
+        {/* FOLDER ALBUMS SECTION: Experience as Muthawwif (Seperti Foto Referensi) */}
+        <div className="muthawwif-folders-wrapper" id="folder-dokumentasi">
           <Reveal variant="fade-up">
-            <div className="gallery-header-row">
-              <div>
-                <span className="section-badge">
-                  <Users size={14} className="text-gold" />
-                  <span>Dokumentasi Nyata di Lapangan</span>
-                </span>
-                <h3 className="leadership-gallery-title">
-                  Momen Kebersamaan &amp; Pelayanan VIP di Tanah Suci
-                </h3>
-              </div>
-              {!isStandalonePage && (
-                <Link href="/leadership" className="btn btn-outline btn-sm view-all-link">
-                  <span>Halaman Lengkap Leadership</span>
-                  <ChevronRight size={16} />
-                </Link>
-              )}
+            <div className="folders-section-header">
+              <h3 className="folders-title">
+                Album Pengalaman &amp; Bimbingan Jamaah di Tanah Suci
+              </h3>
+              <p className="folders-subtitle">
+                Buka setiap folder album di bawah ini untuk melihat arsip foto asli beserta keterangan resmi pengalaman pendampingan di setiap momentum ibadah.
+              </p>
             </div>
 
-            <div className="leadership-gallery-grid">
-              {LEADERSHIP_DOCUMENTATION_GALLERY.map((item) => (
+            {/* Grid of Frosted Glass Folders */}
+            <div className="folders-showcase-grid">
+              {MUTHAWWIF_EXPERIENCE_FOLDERS.map((folder) => (
                 <div
-                  key={item.id}
-                  className="leadership-gallery-card"
-                  onClick={() => setSelectedImage(item.src)}
+                  key={folder.id}
+                  className="folder-card-item"
+                  onClick={() => openFolderModal(folder)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Buka folder album ${folder.title}`}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openFolderModal(folder);
+                    }
+                  }}
                 >
-                  <div className="gallery-card-img-wrap">
-                    <Image
-                      src={item.src}
-                      alt={item.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="gallery-card-img"
-                    />
-                    <div className="gallery-card-badge">{item.category}</div>
-                    <div className="gallery-card-overlay">
-                      <span className="gallery-view-hint">Klik untuk Perbesar</span>
+                  {/* Folder Container with Stacked Photos Peeking Out */}
+                  <div className="folder-visual-wrap">
+                    {/* Folder Back Tab */}
+                    <div className="folder-back-tab" />
+
+                    {/* Stacked Photos Peeking Out */}
+                    <div className="folder-stacked-photos">
+                      {folder.previewImages[2] && (
+                        <div className="folder-peek-photo peek-photo-3">
+                          <Image
+                            src={folder.previewImages[2]}
+                            alt={folder.title}
+                            fill
+                            sizes="180px"
+                            className="peek-img"
+                          />
+                        </div>
+                      )}
+                      {folder.previewImages[1] && (
+                        <div className="folder-peek-photo peek-photo-2">
+                          <Image
+                            src={folder.previewImages[1]}
+                            alt={folder.title}
+                            fill
+                            sizes="180px"
+                            className="peek-img"
+                          />
+                        </div>
+                      )}
+                      {folder.previewImages[0] && (
+                        <div className="folder-peek-photo peek-photo-1">
+                          <Image
+                            src={folder.previewImages[0]}
+                            alt={folder.title}
+                            fill
+                            sizes="180px"
+                            className="peek-img"
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Frosted Glass Folder Front Face */}
+                    <div className="folder-front-pocket">
+                      {/* Decorative Folder Lip */}
+                      <div className="folder-front-lip" />
+
+                      {/* Cute Stickers / Badges on Folder Surface */}
+                      <div className="folder-stickers-container">
+                        <span className="folder-sticker-badge sticker-flag">
+                          🇸🇦 {folder.stickerText}
+                        </span>
+                        <span className="folder-sticker-badge sticker-icon">
+                          <Camera size={12} />
+                        </span>
+                      </div>
+
+                      {/* Click prompt hover indicator */}
+                      <div className="folder-hover-prompt">
+                        <FolderOpen size={16} />
+                        <span>Buka Album</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="gallery-card-content">
-                    <h4 className="gallery-card-title">{item.title}</h4>
-                    <p className="gallery-card-caption">{item.caption}</p>
+
+                  {/* Folder Caption Info */}
+                  <div className="folder-meta-wrap">
+                    <h4 className="folder-title">{folder.title}</h4>
+                    <span className="folder-count-pill">{folder.count} photos</span>
                   </div>
                 </div>
               ))}
@@ -273,54 +327,103 @@ export default function LeadershipSection({ isStandalonePage = false }: { isStan
           </Reveal>
         </div>
 
-        {/* Bottom Leadership Consultation Banner */}
-        <Reveal variant="fade-up" delay={0.15}>
-          <div className="leadership-bottom-cta">
-            <div className="bottom-cta-content">
-              <span className="cta-kicker">PELAYANAN KHUSUS &amp; PRIVATE DEDIKASI</span>
-              <h3 className="cta-heading">
-                Rencanakan Ibadah Umrah Bersama Pendampingan Muthawwif Profesional
-              </h3>
-              <p className="cta-desc">
-                Konsultasikan langsung kebutuhan jadwal, akomodasi private bintang 5 view Ka&apos;bah, serta konsep ibadah bersama Direktur Utama dan jajaran manajemen Temanmu Tour &amp; Travel.
-              </p>
-            </div>
-            <div className="bottom-cta-action">
-              <a
-                href={directConsultationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary btn-lg"
-              >
-                <MessageCircle size={20} />
-                <span>Hubungi Direksi via WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        </Reveal>
-
-        {/* Modal Lightbox for Gallery Photos */}
-        {selectedImage && (
+        {/* INTERACTIVE FOLDER ALBUM MODAL (POPS UP WHEN FOLDER IS CLICKED) */}
+        {activeFolder && (
           <div
-            className="leadership-modal-backdrop"
-            onClick={() => setSelectedImage(null)}
+            className="folder-modal-backdrop"
+            onClick={closeFolderModal}
+            role="dialog"
+            aria-modal="true"
           >
-            <div className="leadership-modal-content" onClick={(e) => e.stopPropagation()}>
-              <button
-                className="leadership-modal-close"
-                onClick={() => setSelectedImage(null)}
-                aria-label="Tutup foto"
-              >
-                &times;
-              </button>
-              <div className="leadership-modal-img-wrap">
-                <Image
-                  src={selectedImage}
-                  alt="Dokumentasi Leadership Temanmu"
-                  fill
-                  style={{ objectFit: "contain" }}
-                  priority
-                />
+            <div
+              className="folder-modal-window"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Top Bar */}
+              <div className="folder-modal-header">
+                <div className="folder-modal-title-col">
+                  <div className="folder-modal-badge-row">
+                    <span className="folder-active-badge">
+                      <Folder size={14} />
+                      <span>{activeFolder.badge}</span>
+                    </span>
+                    <span className="folder-active-location">
+                      <MapPin size={13} />
+                      <span>{activeFolder.location}</span>
+                    </span>
+                  </div>
+                  <h3 className="folder-modal-heading">{activeFolder.title}</h3>
+                  <p className="folder-modal-desc">{activeFolder.description}</p>
+                </div>
+
+                <button
+                  className="folder-modal-close-btn"
+                  onClick={closeFolderModal}
+                  aria-label="Tutup Album"
+                >
+                  <X size={22} />
+                </button>
+              </div>
+
+              {/* Modal Body: Active Large Viewer + Thumbnails */}
+              <div className="folder-modal-body">
+                {/* Main Large Photo Stage */}
+                <div className="folder-modal-stage">
+                  <div className="folder-stage-img-wrap">
+                    <Image
+                      src={activeFolder.allImages[activePhotoIndex].src}
+                      alt={activeFolder.allImages[activePhotoIndex].caption}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 860px"
+                      className="folder-stage-img"
+                      priority
+                    />
+
+                    {/* Navigation Arrows */}
+                    {activeFolder.allImages.length > 1 && (
+                      <>
+                        <button
+                          className="folder-arrow-btn arrow-prev"
+                          onClick={prevPhoto}
+                          aria-label="Foto Sebelumnya"
+                        >
+                          <ChevronLeft size={22} />
+                        </button>
+                        <button
+                          className="folder-arrow-btn arrow-next"
+                          onClick={nextPhoto}
+                          aria-label="Foto Berikutnya"
+                        >
+                          <ChevronRight size={22} />
+                        </button>
+                      </>
+                    )}
+
+                    {/* Counter Indicator */}
+                    <div className="folder-photo-counter">
+                      {activePhotoIndex + 1} / {activeFolder.allImages.length}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Thumbnails Row */}
+                <div className="folder-thumbnails-row">
+                  {activeFolder.allImages.map((img, idx) => (
+                    <div
+                      key={idx}
+                      className={`folder-thumb-item ${activePhotoIndex === idx ? "is-active" : ""}`}
+                      onClick={() => setActivePhotoIndex(idx)}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={`Thumbnail ${idx + 1}`}
+                        fill
+                        sizes="100px"
+                        className="folder-thumb-img"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

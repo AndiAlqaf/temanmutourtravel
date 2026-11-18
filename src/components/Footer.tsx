@@ -69,7 +69,7 @@ export default function Footer() {
                 <a href="#konsep-private">Konsep Umrah Private</a>
               </li>
               <li className="footer-link-item">
-                <a href="/leadership">Our Leadership &amp; Dewan Direksi</a>
+                <a href="#leadership">Our Leadership &amp; Dewan Direksi</a>
               </li>
               <li className="footer-link-item">
                 <a href="#paket-umrah">Pilihan Paket & Biaya</a>

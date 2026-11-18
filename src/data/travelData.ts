@@ -819,7 +819,7 @@ export const LEADERSHIP_MEMBERS: LeadershipMember[] = [
     role: "Direktur Utama & Muthawwif Profesional",
     subtitle: "Al-Azhar University Cairo • Hafizh 30 Juz Al-Qur'an • Pembimbing Ibadah Tokoh Nasional",
     bio: "Sosok pemimpin berdedikasi tinggi dengan latar belakang keilmuan Islam murni dari Universitas Al-Azhar Kairo dan hafalan 30 Juz Al-Qur'an. Berpengalaman luas sebagai muthawwif aktif sejak 2024 serta memimpin perjalanan VVIP, termasuk mendampingi Menteri Kabinet, Ulama Nasional, dan Anggota DPR RI.",
-    image: "/images/leadership/leader_img_1.jpg",
+    image: "/images/leadership/ceo_agung.jpg",
     imageAlt: "Muh. Agung Al Mansyah - Direktur Utama Temanmu Tour & Travel",
     credentials: [
       "Hafizh 30 Juz Al-Qur'an (Ponpes As'adiyah Pattirosompe 2020)",
@@ -881,7 +881,7 @@ export const LEADERSHIP_MEMBERS: LeadershipMember[] = [
     role: "Chief Operating Officer & Head of Strategic Management",
     subtitle: "Al-Azhar University Cairo • S2 Pendidikan Agama Islam • Tata Kelola & Transformasi Digital",
     bio: "Pakar tata kelola operasional dan strategi digital lulusan Universitas Al-Azhar Kairo yang saat ini menempuh Magister Pendidikan Agama Islam di IAIN Parepare. Mengintegrasikan nilai keilmuan Islam dengan sistem operasional modern, digitalisasi layanan, dan budaya pelayanan berintegritas tinggi.",
-    image: "/images/leadership/leader_img_15.jpg",
+    image: "/images/leadership/coo_andi_akram_profile.jpg",
     imageAlt: "Andi Muhammad Akram Ibrahim, Lc. Dipl - Chief Operating Officer",
     credentials: [
       "Sarjana (S1) Dirasat Islamiyah wal Arabiyah Al-Azhar Cairo",
@@ -930,47 +930,378 @@ export const LEADERSHIP_MEMBERS: LeadershipMember[] = [
   },
 ];
 
-export const LEADERSHIP_DOCUMENTATION_GALLERY = [
+export interface MuthawwifExperienceFolder {
+  id: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+  count: number;
+  description: string;
+  location: string;
+  previewImages: string[];
+  allImages: {
+    src: string;
+    caption: string;
+  }[];
+  stickerIcon: "Kemenag" | "Investasi" | "DPR" | "UAS" | "Ramadhan" | "FastTravel" | "AnNur" | "Mazaya" | "Madena";
+  stickerText: string;
+  pdfPage: number;
+}
+
+export const MUTHAWWIF_EXPERIENCE_FOLDERS: MuthawwifExperienceFolder[] = [
   {
-    id: "lead-doc-1",
-    src: "/images/leadership/leader_img_33.jpg",
-    title: "Pendampingan Menag RI Prof. Dr. KH. Nazaruddin Umar, MA",
-    category: "VIP Mentorship",
-    caption: "Muh. Agung Al Mansyah saat mendampingi Menteri Agama Republik Indonesia dan rombongan beribadah di Tanah Suci.",
+    id: "menag-ri",
+    title: "Menteri Agama RI & Ibu",
+    subtitle: "Prof. Dr. KH. Nazaruddin Umar, MA",
+    badge: "Menteri Agama RI",
+    count: 4,
+    description: "Mendampingi Menteri Agama Republik Indonesia Prof. Dr. KH. Nazaruddin Umar, MA dan Ibu Menteri Agama RI dalam menjalankan rangkaian tawaf, sa'i, dan munajat khusyuk di hadapan Ka'bah.",
+    location: "Masjidil Haram, Makkah",
+    previewImages: [
+      "/images/leadership/folders/menag-ri/img_1.jpg",
+      "/images/leadership/folders/menag-ri/img_2.jpg",
+      "/images/leadership/folders/menag-ri/img_3.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/menag-ri/img_1.jpg",
+        caption: "Muh. Agung Al Mansyah mendampingi Menteri Agama RI Prof. Dr. KH. Nazaruddin Umar, MA di hadapan Ka'bah.",
+      },
+      {
+        src: "/images/leadership/folders/menag-ri/img_2.jpg",
+        caption: "Momen kebersamaan bersama Menteri Agama RI dan Ibu Menteri Agama RI di pelataran Masjidil Haram.",
+      },
+      {
+        src: "/images/leadership/folders/menag-ri/img_3.jpg",
+        caption: "Pendampingan ibadah bersama keluarga Menteri Agama Republik Indonesia.",
+      },
+      {
+        src: "/images/leadership/folders/menag-ri/img_4.jpg",
+        caption: "Dokumentasi kebersamaan rombongan Menteri Agama RI seusai pelaksanaan rangkaian manasik.",
+      },
+    ],
+    stickerIcon: "Kemenag",
+    stickerText: "Menag RI",
+    pdfPage: 4,
   },
   {
-    id: "lead-doc-2",
-    src: "/images/leadership/leader_img_39.jpg",
-    title: "Bersama Menteri Investasi RI Rosan Roeslani",
-    category: "VVIP Handling",
-    caption: "Momen pendampingan ibadah dan silaturahmi bersama Menteri Investasi RI di Makkah Al-Mukarramah.",
+    id: "menteri-investasi",
+    title: "Menteri Investasi RI & Stafsus Menag",
+    subtitle: "Rosan Roeslani & Dr. H. Bunyamin Yapid",
+    badge: "Menteri Investasi RI",
+    count: 5,
+    description: "Muthawwif Umrah Privat Mendampingi Menteri Investasi RI Bapak Rosan Roeslani dan Staf Khusus Menteri Agama RI Bapak Dr. H. Bunyamin Yapid, Lc., MA.",
+    location: "Masjidil Haram & Makkah Clock Tower",
+    previewImages: [
+      "/images/leadership/folders/menteri-investasi/img_1.jpg",
+      "/images/leadership/folders/menteri-investasi/img_3.jpg",
+      "/images/leadership/folders/menteri-investasi/img_5.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/menteri-investasi/img_1.jpg",
+        caption: "Bersama Menteri Investasi RI Bapak Rosan Roeslani dan Stafsus Menag Bapak Dr. H. Bunyamin Yapid, Lc., MA.",
+      },
+      {
+        src: "/images/leadership/folders/menteri-investasi/img_2.jpg",
+        caption: "Silaturahmi dan koordinasi bersama pembimbing serta imam di Masjidil Haram.",
+      },
+      {
+        src: "/images/leadership/folders/menteri-investasi/img_3.jpg",
+        caption: "Rombongan VVIP Menteri Investasi RI berlatar keagungan Ka'bah Baitullah.",
+      },
+      {
+        src: "/images/leadership/folders/menteri-investasi/img_4.jpg",
+        caption: "Pendampingan privat Menteri Investasi Rosan Roeslani beserta keluarga dan staf.",
+      },
+      {
+        src: "/images/leadership/folders/menteri-investasi/img_5.jpg",
+        caption: "Staf Khusus Menteri Agama RI Dr. H. Bunyamin Yapid khusyuk memanjatkan doa.",
+      },
+    ],
+    stickerIcon: "Investasi",
+    stickerText: "Menteri Investasi",
+    pdfPage: 5,
   },
   {
-    id: "lead-doc-3",
-    src: "/images/leadership/leader_img_36.jpg",
-    title: "Kolaborasi Bersama Ustadz Abdul Somad (UAS)",
-    category: "Spiritual Guidance",
-    caption: "Menjadi muthawwif dalam program perjalanan ibadah umrah bersama Ustadz Abdul Somad via Esra Wisata.",
+    id: "dpr-nurdin-halid",
+    title: "DPR RI Andi Nurdin Halid & Keluarga",
+    subtitle: "Prof. Dr. Drs. H. Andi. M. Nurdin Halid",
+    badge: "Anggota DPR RI",
+    count: 5,
+    description: "Mendampingi Anggota DPR RI Fraksi Partai Golkar Tahun 2024-2029, Bapak Prof. Dr. Drs. H. Andi. M. Nurdin Halid dan Keluarga Besar dalam perjalanan ibadah umrah private dan city tour ziarah sejarah.",
+    location: "Makkah & Madinah Al-Munawwarah",
+    previewImages: [
+      "/images/leadership/folders/dpr-nurdin-halid/img_3.jpg",
+      "/images/leadership/folders/dpr-nurdin-halid/img_4.jpg",
+      "/images/leadership/folders/dpr-nurdin-halid/img_2.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/dpr-nurdin-halid/img_1.jpg",
+        caption: "Pendampingan di pelataran Masjid bersejarah bersama tokoh nasional.",
+      },
+      {
+        src: "/images/leadership/folders/dpr-nurdin-halid/img_2.jpg",
+        caption: "Kebersamaan bersama rombongan jamaah pria keluarga besar Nurdin Halid.",
+      },
+      {
+        src: "/images/leadership/folders/dpr-nurdin-halid/img_3.jpg",
+        caption: "Bapak Prof. Dr. Andi M. Nurdin Halid bersama istri dan keluarga dalam balutan kain ihram putih.",
+      },
+      {
+        src: "/images/leadership/folders/dpr-nurdin-halid/img_4.jpg",
+        caption: "Muh. Agung Al Mansyah mendampingi Prof. Dr. Andi M. Nurdin Halid saat ziarah di Madinah.",
+      },
+      {
+        src: "/images/leadership/folders/dpr-nurdin-halid/img_5.jpg",
+        caption: "Dokumentasi kebersamaan seluruh anggota keluarga besar di taman kurma bersejarah.",
+      },
+    ],
+    stickerIcon: "DPR",
+    stickerText: "DPR RI",
+    pdfPage: 6,
   },
   {
-    id: "lead-doc-4",
-    src: "/images/leadership/leader_img_43.jpg",
-    title: "Pendampingan Anggota DPR RI Andi Nurdin Halid",
-    category: "Private Family VIP",
-    caption: "Pendampingan private ibadah umrah dan ziarah keluarga besar Prof. Dr. Andi M. Nurdin Halid.",
+    id: "direktur-kemenag",
+    title: "Direktur Penerangan Agama Islam",
+    subtitle: "Dr. H. Muchlis Muhammad Hanafi, Lc., M.A.",
+    badge: "Ditjen Bimas Islam",
+    count: 5,
+    description: "Mendampingi Direktur Penerangan Agama Islam, Direktorat Jenderal Bimbingan Masyarakat Islam, Kementerian Agama Republik Indonesia Bapak Dr. H. Muchlis Muhammad Hanafi, Lc., M.A.",
+    location: "Makkah Al-Mukarramah & Forum Resmi",
+    previewImages: [
+      "/images/leadership/folders/direktur-kemenag/img_3.jpg",
+      "/images/leadership/folders/direktur-kemenag/img_1.jpg",
+      "/images/leadership/folders/direktur-kemenag/img_2.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/direktur-kemenag/img_1.jpg",
+        caption: "Bersama Dr. H. Muchlis Muhammad Hanafi, Lc., M.A. saat ibadah di pelataran Ka'bah.",
+      },
+      {
+        src: "/images/leadership/folders/direktur-kemenag/img_2.jpg",
+        caption: "Momen selfie bersama Dr. Muchlis Hanafi berlatar Masjidil Haram.",
+      },
+      {
+        src: "/images/leadership/folders/direktur-kemenag/img_3.jpg",
+        caption: "Partisipasi dalam forum pertemuan resmi keagamaan bersama delegasi Kerajaan Arab Saudi.",
+      },
+      {
+        src: "/images/leadership/folders/direktur-kemenag/img_4.jpg",
+        caption: "Pertemuan resmi delegasi Kemenag RI di Arab Saudi.",
+      },
+      {
+        src: "/images/leadership/folders/direktur-kemenag/img_5.jpg",
+        caption: "Dokumentasi di dalam area perluasan Masjidil Haram.",
+      },
+    ],
+    stickerIcon: "Kemenag",
+    stickerText: "Kemenag RI",
+    pdfPage: 7,
   },
   {
-    id: "lead-doc-5",
-    src: "/images/leadership/leader_img_31.jpg",
-    title: "Standar Layanan Armada Eksekutif",
-    category: "Transport Excellence",
-    caption: "Pengawasan langsung armada privat GMC Yukon dan Hyundai demi memastikan kenyamanan maksimal jamaah.",
+    id: "umrah-uas",
+    title: "Umrah Akbar Bersama UAS",
+    subtitle: "Ustadz Prof. H. Abdul Somad",
+    badge: "Esra Wisata & UAS",
+    count: 5,
+    description: "Muthawwif Esra Wisata dalam program perjalanan ibadah umrah akbar bersama Ustadz Prof. H. Abdul Somad, Lc., D.E.S.A., Ph.D. di Makkah, Madinah, dan wisata edukasi sejarah Islam.",
+    location: "Tanah Suci & Ziarah Thaif",
+    previewImages: [
+      "/images/leadership/folders/umrah-uas/img_1.jpg",
+      "/images/leadership/folders/umrah-uas/img_3.jpg",
+      "/images/leadership/folders/umrah-uas/img_4.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/umrah-uas/img_1.jpg",
+        caption: "Muh. Agung Al Mansyah berfoto bersama Ustadz Abdul Somad (UAS) di pelataran Ka'bah.",
+      },
+      {
+        src: "/images/leadership/folders/umrah-uas/img_2.jpg",
+        caption: "Momen ziarah dan kajian santai bersama UAS di perkebunan kurma.",
+      },
+      {
+        src: "/images/leadership/folders/umrah-uas/img_3.jpg",
+        caption: "Rombongan jamaah umrah bersama UAS berseragam ihram di hadapan Ka'bah.",
+      },
+      {
+        src: "/images/leadership/folders/umrah-uas/img_4.jpg",
+        caption: "Mengenakan rompi resmi muthawwif Esra Wisata mendampingi UAS.",
+      },
+      {
+        src: "/images/leadership/folders/umrah-uas/img_5.jpg",
+        caption: "Pemberian syal dan sesi foto bersama jamaah pendaftar program Umrah Bersama UAS.",
+      },
+    ],
+    stickerIcon: "UAS",
+    stickerText: "UAS Esra",
+    pdfPage: 8,
   },
   {
-    id: "lead-doc-6",
-    src: "/images/leadership/leader_img_35.jpg",
-    title: "Eksplorasi Panorama Jabal Khandama",
-    category: "Field Guidance",
-    caption: "Muh. Agung Al Mansyah membimbing jamaah mengeksplorasi sejarah dan keagungan kota suci Makkah dari puncak Jabal Khandama.",
+    id: "arta-wisata-ramadhan",
+    title: "Arta Wisata Umrah Ramadhan VVIP",
+    subtitle: "Movenpick Hotel Hajar Tower Makkah",
+    badge: "CEO Full Ramadhan VVIP",
+    count: 4,
+    description: "Muthawwif Arta Wisata Tour & Travel sekaligus CEO Arta Wisata Umrah Full Ramadhan VVIP, menginap di Movenpick Hotel & Residences Hajar Tower Makkah Clock Tower.",
+    location: "Movenpick Hajar Tower & Pelataran Nabawi",
+    previewImages: [
+      "/images/leadership/folders/arta-wisata-ramadhan/img_4.jpg",
+      "/images/leadership/folders/arta-wisata-ramadhan/img_3.jpg",
+      "/images/leadership/folders/arta-wisata-ramadhan/img_1.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/arta-wisata-ramadhan/img_1.jpg",
+        caption: "Ziarah di pelataran Masjid Nabawi Madinah bersama jamaah VIP.",
+      },
+      {
+        src: "/images/leadership/folders/arta-wisata-ramadhan/img_2.jpg",
+        caption: "Dokumentasi kebersamaan keluarga jamaah di kota suci Madinah.",
+      },
+      {
+        src: "/images/leadership/folders/arta-wisata-ramadhan/img_3.jpg",
+        caption: "Di lobby Movenpick Hotel & Residences Hajar Tower Makkah.",
+      },
+      {
+        src: "/images/leadership/folders/arta-wisata-ramadhan/img_4.jpg",
+        caption: "Di pelataran Masjidil Haram berlatar kemegahan Abraj Al-Bait Makkah Clock Tower.",
+      },
+    ],
+    stickerIcon: "Ramadhan",
+    stickerText: "Full Ramadhan",
+    pdfPage: 9,
+  },
+  {
+    id: "fast-travel",
+    title: "PT Fastabiqul Khaerat (Fast Travel)",
+    subtitle: "Mitra Resmi Izin PPIU Kemenag RI",
+    badge: "Fast Travel",
+    count: 3,
+    description: "Muthawwif PT. Fastabiqul Khaerat Travel (Fast Travel) - Penyelenggara Resmi Izin PPIU Kemenag RI No. 212210042780001, membimbing jamaah di Jabal Rahmah & Ka'bah.",
+    location: "Jabal Rahmah & Masjidil Haram",
+    previewImages: [
+      "/images/leadership/folders/fast-travel/img_1.jpg",
+      "/images/leadership/folders/fast-travel/img_2.jpg",
+      "/images/leadership/folders/fast-travel/img_3.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/fast-travel/img_1.jpg",
+        caption: "Rombongan jamaah Fast Travel di puncak Jabal Rahmah, Arafah.",
+      },
+      {
+        src: "/images/leadership/folders/fast-travel/img_2.jpg",
+        caption: "Ziarah sejarah di gerbang perbatasan tanah suci.",
+      },
+      {
+        src: "/images/leadership/folders/fast-travel/img_3.jpg",
+        caption: "Membimbing jamaah sepuh Fastabiqul Khairat tawaf langsung di pelataran Ka'bah.",
+      },
+    ],
+    stickerIcon: "FastTravel",
+    stickerText: "Fast Travel",
+    pdfPage: 10,
+  },
+  {
+    id: "annur-maarif",
+    title: "An-Nur Maarif & Janewa Rabbani",
+    subtitle: "Program Umrah Akbar di Jabal Uhud",
+    badge: "An-Nur Maarif",
+    count: 3,
+    description: "Muthawwif PT. An-Nur Maarif dan PT. Janewa Rabbani Wisata pada program Umrah Akbar di Jabal Uhud dan pelataran Masjid Nabawi Madinah.",
+    location: "Jabal Uhud & Nabawi Madinah",
+    previewImages: [
+      "/images/leadership/folders/annur-maarif/img_1.jpg",
+      "/images/leadership/folders/annur-maarif/img_2.jpg",
+      "/images/leadership/folders/annur-maarif/img_3.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/annur-maarif/img_1.jpg",
+        caption: "Ratusan jamaah Umrah Akbar JRW berkumpul di pelataran syuhada Jabal Uhud.",
+      },
+      {
+        src: "/images/leadership/folders/annur-maarif/img_2.jpg",
+        caption: "Barisan jamaah ihram An-Nur Maarif dalam arahan bimbingan manasik.",
+      },
+      {
+        src: "/images/leadership/folders/annur-maarif/img_3.jpg",
+        caption: "Kebersamaan bersama jamaah keluarga dan anak-anak di Madinah.",
+      },
+    ],
+    stickerIcon: "AnNur",
+    stickerText: "An-Nur Maarif",
+    pdfPage: 11,
+  },
+  {
+    id: "mazaya-travel",
+    title: "Mazaya Travel",
+    subtitle: "Bimbingan Miqat Bir Ali & Masjidil Haram",
+    badge: "Mazaya Travel",
+    count: 4,
+    description: "Muthawwif Mazaya Travel membimbing jamaah berihram dan berniat miqat di Masjid Dzulhulaifah (Bir Ali) serta beribadah di Masjidil Haram.",
+    location: "Miqat Bir Ali & Masjidil Haram",
+    previewImages: [
+      "/images/leadership/folders/mazaya-travel/img_1.jpg",
+      "/images/leadership/folders/mazaya-travel/img_2.jpg",
+      "/images/leadership/folders/mazaya-travel/img_4.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/mazaya-travel/img_1.jpg",
+        caption: "Rombongan jamaah Mazaya berseragam putih di Masjid Bir Ali sebelum bertolak ke Makkah.",
+      },
+      {
+        src: "/images/leadership/folders/mazaya-travel/img_2.jpg",
+        caption: "Membimbing jamaah Mazaya berdoa di hadapan Ka'bah pada malam hari.",
+      },
+      {
+        src: "/images/leadership/folders/mazaya-travel/img_3.jpg",
+        caption: "Spanduk jamaah umrah Mazaya Travel di pelataran Bir Ali.",
+      },
+      {
+        src: "/images/leadership/folders/mazaya-travel/img_4.jpg",
+        caption: "Dokumentasi kebersamaan jamaah Mazaya Travel saat perjalanan antar kota suci.",
+      },
+    ],
+    stickerIcon: "Mazaya",
+    stickerText: "Mazaya Travel",
+    pdfPage: 12,
+  },
+  {
+    id: "madena-wisata",
+    title: "Madena Wisata Sambut Ramadhan",
+    subtitle: "20 Februari - 04 Maret 2025",
+    badge: "Madena Wisata",
+    count: 3,
+    description: "Muthawwif Arta Wisata Tour & Travel dalam Program Umrah Sambut Ramadhan Madena Wisata Tour & Travel di Jabal Rahmah dan Ka'bah Baitullah.",
+    location: "Jabal Rahmah & Pelataran Ka'bah",
+    previewImages: [
+      "/images/leadership/folders/madena-wisata/img_2.jpg",
+      "/images/leadership/folders/madena-wisata/img_1.jpg",
+      "/images/leadership/folders/madena-wisata/img_3.jpg",
+    ],
+    allImages: [
+      {
+        src: "/images/leadership/folders/madena-wisata/img_1.jpg",
+        caption: "Jamaah berseragam syal oranye Madena Wisata khusyuk beribadah di pelataran Ka'bah.",
+      },
+      {
+        src: "/images/leadership/folders/madena-wisata/img_2.jpg",
+        caption: "Foto bersama seluruh rombongan dengan spanduk resmi Umrah Sambut Ramadhan di Jabal Rahmah.",
+      },
+      {
+        src: "/images/leadership/folders/madena-wisata/img_3.jpg",
+        caption: "Pendampingan langsung pelaksanaan tawaf dan sa'i di Masjidil Haram.",
+      },
+    ],
+    stickerIcon: "Madena",
+    stickerText: "Madena Wisata",
+    pdfPage: 13,
   },
 ];
+
